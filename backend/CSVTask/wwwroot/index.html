@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Management</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1>User Data Management</h1>
+
+    <div>
+        <div>
+            <label for="filterName">Name:</label>
+            <input type="text" id="filterName" placeholder="Filter by Name">
+        </div>
+
+        <div>
+            <label for="filterPhone">Phone:</label>
+            <input type="text" id="filterPhone" placeholder="Filter by Phone">
+        </div>
+
+        <div>
+            <label for="filterSalary">Salary:</label>
+            <input type="number" id="filterSalary" placeholder="Filter by Salary">
+        </div>
+
+        <div>
+            <label for="filterDateOfBirth">Date of Birth:</label>
+            <input type="date" id="filterDateOfBirth">
+        </div>
+
+        <div>
+            <label for="filterMarried">Married:</label>
+            <input type="checkbox" id="filterMarried">
+        </div>
+
+        <div>
+            <label for="filterOrderBy">Order By:</label>
+            <select id="filterOrderBy">
+                <option value="CreatedDate">CreatedDate</option>
+                <option value="Id">ID</option>
+                <option value="Name">Name</option>
+                <option value="DateOfBirth">Date of Birth</option>
+                <option value="Married">Married</option>
+                <option value="Phone">Phone</option>
+                <option value="Salary">Salary</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="filterAscending">Ascending:</label>
+            <input type="checkbox" id="filterAscending" checked>
+        </div>
+
+        <button onclick="fetchData()">Apply Filters</button>
+    </div>
+
+
+    <input type="text" id="searchInput" placeholder="Filter by any column" onkeyup="filterTable()">
+    <input type="file" id="fileInput">
+    <button onclick="uploadCsv()">Upload CSV</button>
+    <button onclick="fetchData()">Load Data</button>
+    <button onclick="clearTable()">Clear Table</button>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Name</th>
+                <th onclick="sortTable(2)">Date of Birth</th>
+                <th onclick="sortTable(3)">Married</th>
+                <th onclick="sortTable(4)">Phone</th>
+                <th onclick="sortTable(5)">Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div id="editModal" style="display:none;">
+        <div>
+            <h2>Edit User</h2>
+            <label for="editName">Name:</label>
+            <input type="text" id="editName">
+            <br>
+            <label for="editPhone">Phone:</label>
+            <input type="text" id="editPhone">
+            <br>
+            <label for="editSalary">Salary:</label>
+            <input type="number" id="editSalary" step="0.01">
+            <br>
+            <button onclick="saveUser()">Save</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
